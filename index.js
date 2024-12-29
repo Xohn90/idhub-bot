@@ -61,9 +61,9 @@
             console.log(chalk.blue(`奖励积分: ${airdrop.data.coins}`));
 
             const user = await coday("https://idhub-api.litentry.io/activity/api/v1/getUserInfo", 'GET', null, headers);  // 获取用户信息
-            const { email, coins, evmAddress } = user.data || {};
-            if (email) {
-                console.log(chalk.blue(`用户 Email: ${email} | Current ID coins: ${coins} | evmAddress: ${evmAddress}`));
+            const { email, coins, address } = user.data || {};
+            if (email || address) {
+                console.log(chalk.blue(`用户 Email: ${email} | Current ID coins: ${coins} | address: ${address}`));
                 const dayH = new Date().getHours();
                 if (dayH >= 8 && dayH < 12) await CheckIn(token, email);
             } else {
